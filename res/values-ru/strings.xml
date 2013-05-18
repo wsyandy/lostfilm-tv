@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="news_title">Сериалы на lostfilm.tv</string>
+    <string name="no_episodes">Нет новых серий</string>
+    <string name="unable_to_load">Невозможно загрузить данные</string>
+</resources>
