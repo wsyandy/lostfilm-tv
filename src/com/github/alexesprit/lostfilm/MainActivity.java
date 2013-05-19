@@ -13,8 +13,7 @@ import java.util.ArrayList;
 
 public final class MainActivity extends Activity {
     private NewsLoader loader;
-    private NewsItemAdapter adapter;
-    private ListView view;
+    private ListView newsView;
     private AbsListView.OnScrollListener listener = new AbsListView.OnScrollListener() {
         private int prevTotalCount = 0;
 
@@ -38,11 +37,10 @@ public final class MainActivity extends Activity {
         setContentView(R.layout.main);
         setTitle(R.string.news_title);
 
-        adapter = new NewsItemAdapter(MainActivity.this);
-        view = (ListView)findViewById(R.id.news_list);
-        view.setAdapter(adapter);
-        view.setEmptyView(findViewById(R.id.empty_view));
-        view.setOnScrollListener(listener);
+        newsView = (ListView)findViewById(R.id.news_list);
+        newsView.setAdapter(new NewsItemAdapter(this));
+        newsView.setEmptyView(findViewById(R.id.empty_view));
+        newsView.setOnScrollListener(listener);
 
         loader = new NewsLoader();
         updateView();
@@ -68,6 +66,7 @@ public final class MainActivity extends Activity {
                     @Override
                     public void run() {
                         if (items != null) {
+                            NewsItemAdapter adapter = (NewsItemAdapter)newsView.getAdapter();
                             adapter.extend(items);
                             adapter.notifyDataSetChanged();
                         } else {
