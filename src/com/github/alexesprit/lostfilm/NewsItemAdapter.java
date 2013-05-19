@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.github.alexesprit.lostfilm.loader.ImageLoader;
+import com.github.alexesprit.lostfilm.loader.LazyImageLoader;
 
 import java.util.ArrayList;
 
 public final class NewsItemAdapter extends BaseAdapter {
     private ArrayList<NewsItem> items = new ArrayList<NewsItem>();
-    private ImageLoader loader = new ImageLoader();
+    private LazyImageLoader loader = new LazyImageLoader();
     private LayoutInflater inflater;
 
     public NewsItemAdapter(Context context) {
-        this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -38,7 +38,6 @@ public final class NewsItemAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder vh;
-        NewsItem item = getItem(i);
         if (null == view) {
             view = inflater.inflate(R.layout.item, null);
             vh = new ViewHolder();
@@ -50,15 +49,7 @@ public final class NewsItemAdapter extends BaseAdapter {
         } else {
             vh = (ViewHolder)view.getTag();
         }
-        int color = Util.getStringColor(item.name);
-        vh.nameView.setText(item.name);
-        vh.nameView.setTextColor(color);
-        vh.dateView.setText(item.date);
-        vh.dateView.setTextColor(color);
-        vh.episodeView.setText(item.episode);
-        /*if (vh.preView.getDrawable() == null) {
-            loader.loadImage(item.previewURL, vh.preView);
-        }*/
+        vh.populateFrom(getItem(i));
         return view;
     }
 
@@ -71,5 +62,16 @@ public final class NewsItemAdapter extends BaseAdapter {
         private TextView episodeView;
         private TextView dateView;
         private ImageView preView;
+
+        private void populateFrom(NewsItem item) {
+            int color = Util.getStringColor(item.name);
+            nameView.setText(item.name);
+            nameView.setTextColor(color);
+            dateView.setText(item.date);
+            dateView.setTextColor(color);
+            episodeView.setText(item.episode);
+            preView.setVisibility(View.GONE);
+            loader.loadImage(item.previewURL, preView);
+        }
     }
 }
