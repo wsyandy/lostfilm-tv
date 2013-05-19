@@ -41,8 +41,6 @@ public final class NewsLoader {
                     item.date = mdata.group(4);
                     item.episode = mdata.group(3);
                     item.previewURL = getFullURL(mdata.group(2));
-                    Log.i("LostFilm", getFullURL(mdata.group(2)));
-                    Log.i("LostFilm", getFullURL(mdata.group(1)));
                     items.add(item);
                 }
             }
