@@ -19,7 +19,7 @@
               android:layout_height="fill_parent"
               android:id="@+id/serials_empty_view"
               android:visibility="gone"
-              android:text="No TV series"
+              android:text="@string/no_serials"
               android:layout_gravity="center"
               android:textSize="18sp"
               android:gravity="center"/>
