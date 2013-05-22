@@ -67,7 +67,7 @@ public class DescriptionActivity extends SherlockActivity {
         @Override
         protected void onPostExecute(SerialDescription desc) {
             if (null != desc) {
-                //updateView(desc);
+                updateView(desc);
             } else {
                 Toast.makeText(DescriptionActivity.this, R.string.unable_to_load, Toast.LENGTH_SHORT).show();
             }
