@@ -16,12 +16,17 @@ import com.github.alexesprit.lostfilm.loader.DescripionLoader;
 
 
 public class DescriptionActivity extends SherlockActivity {
+    private ListView episodesList;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.desc_view);
 
         Intent intent = getIntent();
         if (null != intent) {
+            episodesList = (ListView)findViewById(R.id.episodes_list);
+            episodesList.setEmptyView(findViewById(R.id.description_empty_view));
+
             String url = intent.getStringExtra("url");
             String name = intent.getStringExtra("name");
             setTitle(name);
@@ -42,7 +47,6 @@ public class DescriptionActivity extends SherlockActivity {
         ImageView posterView = (ImageView)headerView.findViewById(R.id.serial_poster);
         posterView.setImageBitmap(desc.poster);
 
-        ListView episodesList = (ListView)findViewById(R.id.episodes_list);
         episodesList.addHeaderView(headerView);
         episodesList.setAdapter(new EpisodeItemAdapter(this, desc.episodes));
     }
@@ -63,7 +67,7 @@ public class DescriptionActivity extends SherlockActivity {
         @Override
         protected void onPostExecute(SerialDescription desc) {
             if (null != desc) {
-                updateView(desc);
+                //updateView(desc);
             } else {
                 Toast.makeText(DescriptionActivity.this, R.string.unable_to_load, Toast.LENGTH_SHORT).show();
             }
