@@ -9,35 +9,34 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 public class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
-    private final Context mContext;
-    private final ActionBar mActionBar;
-    private final ViewPager mViewPager;
+    private final Context context;
+    private final ActionBar actionBar;
+    private final ViewPager viewPager;
 
     public TabsAdapter(SherlockFragmentActivity activity, ViewPager pager) {
         super(activity.getSupportFragmentManager());
-        mContext = activity;
-        mActionBar = activity.getSupportActionBar();
-        mViewPager = pager;
-        mViewPager.setAdapter(this);
-        mViewPager.setOnPageChangeListener(this);
+        context = activity;
+        actionBar = activity.getSupportActionBar();
+        viewPager = pager;
+        viewPager.setOnPageChangeListener(this);
     }
 
     public void addTab(ActionBar.Tab tab, Class<?> cls) {
-        tab.setTag(cls);
+        tab.setTag(cls.getName());
         tab.setTabListener(this);
-        mActionBar.addTab(tab);
+        actionBar.addTab(tab);
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return mActionBar.getTabCount();
+        return actionBar.getTabCount();
     }
 
     @Override
     public Fragment getItem(int position) {
-        Class<?> cls = (Class<?>)mActionBar.getTabAt(position).getTag();
-        return Fragment.instantiate(mContext, cls.getName());
+        String fragmentName = (String)actionBar.getTabAt(position).getTag();
+        return Fragment.instantiate(context, fragmentName);
     }
 
     @Override
@@ -46,7 +45,7 @@ public class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabLi
 
     @Override
     public void onPageSelected(int position) {
-        mActionBar.setSelectedNavigationItem(position);
+        actionBar.setSelectedNavigationItem(position);
     }
 
     @Override
@@ -55,7 +54,7 @@ public class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabLi
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        mViewPager.setCurrentItem(tab.getPosition());
+        viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -66,4 +65,3 @@ public class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabLi
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
     }
 }
-

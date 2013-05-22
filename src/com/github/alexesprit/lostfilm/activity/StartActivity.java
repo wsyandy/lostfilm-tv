@@ -25,6 +25,7 @@ public class StartActivity extends SherlockFragmentActivity {
         TabsAdapter adapter = new TabsAdapter(this, pager);
         adapter.addTab(bar.newTab().setText(R.string.new_series), NewsListFragment.class);
         adapter.addTab(bar.newTab().setText(R.string.all_series), SerialsListFragment.class);
+        pager.setAdapter(adapter);
 
         if (null != inState) {
             int pos = inState.getInt("pos", 0);
