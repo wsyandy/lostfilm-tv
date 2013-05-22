@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">lostfilm-tv</string>
-    <string name="news_title">TV series on lostfilm.tv</string>
+    <string name="app_title">TV series on lostfilm.tv</string>
     <string name="no_episodes">No new episodes</string>
     <string name="unable_to_load">Unable to load data</string>
+    <string name="loading">Loading…</string>
+    <string name="episodes_list">Esisodes list:</string>
+    <string name="new_series">Новые</string>
+    <string name="all_series">Все</string>
 </resources>

@@ -17,15 +17,15 @@ public class LazyImageLoader {
             view.setImageBitmap(bmp);
             view.setVisibility(View.VISIBLE);
         } else {
-            new ImageLoader(url, view).execute();
+            new ImageLoadTask(url, view).execute();
         }
     }
 
-    private class ImageLoader extends AsyncTask<Void, Void, Bitmap> {
+    private class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
         private String url;
         private ImageView view;
 
-        private ImageLoader(String url, ImageView view) {
+        private ImageLoadTask(String url, ImageView view) {
             this.url = url;
             this.view = view;
         }

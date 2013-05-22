@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 
 public final class Util {
+    private static final String LOSTFILM_URL = "http://www.lostfilm.tv";
     private static int colors[] = new int[]{
             0xFF8EE5EE, 0xFF54FF9F,
             0xFFC0FF3E, 0xFFF0E68C,
@@ -53,5 +54,13 @@ public final class Util {
             Log.e("LostFilm", "getBitmapByURL: IOException");
         }
         return null;
+    }
+
+    public static String removeTags(String text) {
+        return android.text.Html.fromHtml(text).toString();
+    }
+
+    public static String getFullURL(String localURL) {
+        return LOSTFILM_URL + localURL;
     }
 }

@@ -1,4 +1,4 @@
-package com.github.alexesprit.lostfilm;
+package com.github.alexesprit.lostfilm.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.github.alexesprit.lostfilm.R;
+import com.github.alexesprit.lostfilm.Util;
+import com.github.alexesprit.lostfilm.item.NewsItem;
 import com.github.alexesprit.lostfilm.loader.LazyImageLoader;
 
 import java.util.ArrayList;
@@ -39,12 +42,8 @@ public final class NewsItemAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder vh;
         if (null == view) {
-            view = inflater.inflate(R.layout.item, null);
-            vh = new ViewHolder();
-            vh.nameView = (TextView)view.findViewById(R.id.item_name);
-            vh.dateView = (TextView)view.findViewById(R.id.item_date);
-            vh.episodeView = (TextView)view.findViewById(R.id.item_episode);
-            vh.preView = (ImageView)view.findViewById(R.id.item_preview);
+            view = inflater.inflate(R.layout.news_item, null);
+            vh = new ViewHolder(view);
             view.setTag(vh);
         } else {
             vh = (ViewHolder)view.getTag();
@@ -62,6 +61,13 @@ public final class NewsItemAdapter extends BaseAdapter {
         private TextView episodeView;
         private TextView dateView;
         private ImageView preView;
+
+        private ViewHolder(View view) {
+            nameView = (TextView)view.findViewById(R.id.news_item_name);
+            dateView = (TextView)view.findViewById(R.id.news_item_date);
+            episodeView = (TextView)view.findViewById(R.id.news_item_episode);
+            preView = (ImageView)view.findViewById(R.id.news_item_preview);
+        }
 
         private void populateFrom(NewsItem item) {
             int color = Util.getStringColor(item.name);
