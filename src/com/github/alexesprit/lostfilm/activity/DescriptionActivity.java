@@ -1,6 +1,5 @@
 package com.github.alexesprit.lostfilm.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,13 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.actionbarsherlock.app.SherlockActivity;
 import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.adapter.EpisodeItemAdapter;
 import com.github.alexesprit.lostfilm.item.SerialDescription;
 import com.github.alexesprit.lostfilm.loader.DescripionLoader;
 
 
-public class DescriptionActivity extends Activity {
+public class DescriptionActivity extends SherlockActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.desc_view);
