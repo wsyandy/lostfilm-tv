@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.adapter.EpisodeItemAdapter;
@@ -63,6 +64,8 @@ public class DescriptionActivity extends SherlockActivity {
         protected void onPostExecute(SerialDescription desc) {
             if (null != desc) {
                 updateView(desc);
+            } else {
+                Toast.makeText(DescriptionActivity.this, R.string.unable_to_load, Toast.LENGTH_SHORT).show();
             }
             findViewById(R.id.loading_layout).setVisibility(View.GONE);
         }
