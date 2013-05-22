@@ -16,6 +16,7 @@ public class StartActivity extends SherlockFragmentActivity {
         super.onCreate(inState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.start_view);
+        setTitle(R.string.app_title);
 
         ActionBar bar = getSupportActionBar();
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
