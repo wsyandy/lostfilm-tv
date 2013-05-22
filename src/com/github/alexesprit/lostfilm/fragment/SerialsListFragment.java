@@ -39,6 +39,7 @@ public class SerialsListFragment extends SherlockFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         serialsList = (ListView)getActivity().findViewById(R.id.serials_list);
+        serialsList.setEmptyView(getActivity().findViewById(R.id.serials_empty_view));
         serialsList.setOnItemClickListener(clickListener);
         updateView();
     }
