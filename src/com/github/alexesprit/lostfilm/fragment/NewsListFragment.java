@@ -46,11 +46,6 @@ public class NewsListFragment extends SherlockFragment {
     };
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.news_list_view, null);
     }
