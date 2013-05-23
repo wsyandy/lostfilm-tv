@@ -1,8 +1,8 @@
 package com.github.alexesprit.lostfilm.loader;
 
 import android.util.Log;
-import com.github.alexesprit.lostfilm.item.NewsItem;
 import com.github.alexesprit.lostfilm.Util;
+import com.github.alexesprit.lostfilm.item.NewsItem;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -10,12 +10,17 @@ import java.util.regex.Pattern;
 
 public final class NewsListLoader {
     private static final String NEWS_URL = "http://www.lostfilm.tv/browse.php";
-    // 1 group: name
-    // 2 group: data
+    /*
+     * 1 group: serial name
+     * 2 group: data (DATA_PATTERN)
+     */
     private static final String NEWS_PATTERN = "<span style=\"font-family:arial;font-size:14px;color:#000000\">(.+?)</span>(.+?)</b>\n\t\t</span>";
-    // 1 group: TV series URL
-    // 2 group: episode name
-    // 3 group: release date
+    /*
+     * 1 group: description local URL
+     * 2 group: poster local URL
+     * 3 group: episode name
+     * 4 group: release date
+     */
     private static final String DATA_PATTERN = "<a href=\"(.+?)\"><img src=\"(.+?)\".+?<span class=\"torrent_title\"><b>(.+?)</b>.+?Дата: <b>(.+?) ";
     private int page = 1;
 
@@ -62,6 +67,4 @@ public final class NewsListLoader {
         int param = (page - 1) * 15;
         return String.format("%s?o=%d", NEWS_URL, param);
     }
-
-
 }
