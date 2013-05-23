@@ -75,14 +75,15 @@ public class SerialsListFragment extends SherlockFragment {
 
         @Override
         protected void onPostExecute(ArrayList<SerialItem> items) {
-            SherlockFragmentActivity activity = getSherlockActivity();
-            if (items != null) {
-                ListView view = (ListView)activity.findViewById(R.id.serials_list);
-                view.setAdapter(new SerialItemAdapter(activity, items));
-            } else {
-                Toast.makeText(activity, R.string.unable_to_load, Toast.LENGTH_SHORT).show();
+            if (isVisible()) {
+                SherlockFragmentActivity activity = getSherlockActivity();
+                if (items != null) {
+                    serialsList.setAdapter(new SerialItemAdapter(activity, items));
+                } else {
+                    Toast.makeText(activity, R.string.unable_to_load, Toast.LENGTH_SHORT).show();
+                }
+                setLoadingProgress(false);
             }
-            setLoadingProgress(false);
         }
     }
 }

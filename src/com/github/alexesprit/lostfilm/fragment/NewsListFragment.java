@@ -104,14 +104,16 @@ public class NewsListFragment extends SherlockFragment {
 
         @Override
         protected void onPostExecute(ArrayList<NewsItem> items) {
-            if (items != null) {
-                NewsItemAdapter adapter = (NewsItemAdapter)newsView.getAdapter();
-                adapter.extend(items);
-                adapter.notifyDataSetChanged();
-            } else {
-                Toast.makeText(getActivity(), R.string.unable_to_load, Toast.LENGTH_SHORT).show();
+            if (isVisible()) {
+                if (items != null) {
+                    NewsItemAdapter adapter = (NewsItemAdapter)newsView.getAdapter();
+                    adapter.extend(items);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getActivity(), R.string.unable_to_load, Toast.LENGTH_SHORT).show();
+                }
+                setLoadingProgress(false);
             }
-            setLoadingProgress(false);
         }
     }
 }
