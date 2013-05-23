@@ -28,6 +28,7 @@ public class DescriptionActivity extends SherlockActivity {
         if (null != intent) {
             episodesList = (ListView)findViewById(R.id.episodes_list);
             episodesList.setEmptyView(findViewById(R.id.description_empty_view));
+            episodesList.setHeaderDividersEnabled(false);
 
             String url = intent.getStringExtra("url");
             String name = intent.getStringExtra("name");
