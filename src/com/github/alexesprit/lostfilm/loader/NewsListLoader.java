@@ -16,7 +16,7 @@ public final class NewsListLoader {
     // 1 group: TV series URL
     // 2 group: episode name
     // 3 group: release date
-    private static final String DATA_PATTERN = "<a href=\"(.+?)\"><img src=\"(.+?)\".+?<span class=\"torrent_title\"><b>(.+?)</b>.+?Дата: <b>(.+?)</b><br />";
+    private static final String DATA_PATTERN = "<a href=\"(.+?)\"><img src=\"(.+?)\".+?<span class=\"torrent_title\"><b>(.+?)</b>.+?Дата: <b>(.+?) ";
     private int page = 1;
 
     public void setNextPage() {
