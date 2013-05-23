@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Window;
 import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.adapter.EpisodeItemAdapter;
 import com.github.alexesprit.lostfilm.item.SerialDescription;
@@ -20,6 +21,7 @@ public class DescriptionActivity extends SherlockActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.desc_view);
 
         Intent intent = getIntent();
@@ -51,12 +53,16 @@ public class DescriptionActivity extends SherlockActivity {
         episodesList.setAdapter(new EpisodeItemAdapter(this, desc.episodes));
     }
 
+    private void setLoadingProgress(boolean show) {
+        setSupportProgressBarIndeterminateVisibility(show);
+    }
+
     private class DescLoadTask extends AsyncTask<String, Void, SerialDescription> {
         private DescripionLoader loader = new DescripionLoader();
 
         @Override
         protected void onPreExecute() {
-
+            setLoadingProgress(true);
         }
 
         @Override
@@ -71,7 +77,7 @@ public class DescriptionActivity extends SherlockActivity {
             } else {
                 Toast.makeText(DescriptionActivity.this, R.string.unable_to_load, Toast.LENGTH_SHORT).show();
             }
-            findViewById(R.id.loading_layout).setVisibility(View.GONE);
+            setLoadingProgress(false);
         }
     }
 }

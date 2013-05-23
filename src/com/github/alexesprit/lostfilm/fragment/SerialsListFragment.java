@@ -1,6 +1,5 @@
 package com.github.alexesprit.lostfilm.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.activity.DescriptionActivity;
 import com.github.alexesprit.lostfilm.adapter.SerialItemAdapter;
@@ -55,8 +55,18 @@ public class SerialsListFragment extends SherlockFragment {
         startActivity(intent);
     }
 
+    private void setLoadingProgress(boolean show) {
+        SherlockFragmentActivity activity = getSherlockActivity();
+        activity.setSupportProgressBarIndeterminateVisibility(show);
+    }
+
     private class SerialsListLoadTask extends AsyncTask<Void, Void, ArrayList<SerialItem>> {
         private SerialsListLoader loader = new SerialsListLoader();
+
+        @Override
+        protected void onPreExecute() {
+            setLoadingProgress(true);
+        }
 
         @Override
         protected ArrayList<SerialItem> doInBackground(Void... voids) {
@@ -65,14 +75,14 @@ public class SerialsListFragment extends SherlockFragment {
 
         @Override
         protected void onPostExecute(ArrayList<SerialItem> items) {
-            Activity activity = getActivity();
+            SherlockFragmentActivity activity = getSherlockActivity();
             if (items != null) {
                 ListView view = (ListView)activity.findViewById(R.id.serials_list);
                 view.setAdapter(new SerialItemAdapter(activity, items));
             } else {
                 Toast.makeText(activity, R.string.unable_to_load, Toast.LENGTH_SHORT).show();
             }
-            activity.findViewById(R.id.loading_layout).setVisibility(View.GONE);
+            setLoadingProgress(false);
         }
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.github.alexesprit.lostfilm.activity.DescriptionActivity;
 import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.adapter.NewsItemAdapter;
@@ -86,7 +87,8 @@ public class NewsListFragment extends SherlockFragment {
     }
 
     private void setLoadingProgress(boolean show) {
-        getSherlockActivity().setSupportProgressBarIndeterminateVisibility(show);
+        SherlockFragmentActivity activity = getSherlockActivity();
+        activity.setSupportProgressBarIndeterminateVisibility(show);
     }
 
     private class NewsLoadTask extends AsyncTask<Void, Void, ArrayList<NewsItem>> {
