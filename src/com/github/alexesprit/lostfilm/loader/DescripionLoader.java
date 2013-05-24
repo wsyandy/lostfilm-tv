@@ -13,7 +13,6 @@ public class DescripionLoader {
     private static final String DESC_PATTERN = "<h2 style=\"color: #999999;font-size: 14px;font-weight: bold\">(.+?)\"</h2></div>.+?<span>(.+?)</span>";
     private static final String POSTER_PATTERN = "<img src=\"(.+?)\" alt=\"\" title=\"\" align=\"center\" vspace=\"0\" hspace=\"0\" width=\"480\" height=\"270\" />";
     private static final String EPISODES_PATTERN = "</span>, <span>(.+?)</span></td>.+?<span style=\"color:#4b4b4b\">(.+?)</span><br />";
-    private boolean isLoaded = false;
 
     public SerialDescription getDescription(String url) {
         long t0, t1;
