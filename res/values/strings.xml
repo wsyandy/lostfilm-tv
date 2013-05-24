@@ -6,8 +6,8 @@
     <string name="unable_to_load">Unable to load data</string>
     <string name="loading">Loading…</string>
     <string name="episodes_list">Esisodes list:</string>
-    <string name="new_series">New</string>
-    <string name="all_series">All</string>
+    <string name="new_series">New episodes</string>
+    <string name="all_series">All serials</string>
     <string name="no_description">No description</string>
     <string name="no_serials">No TV series</string>
 </resources>

@@ -5,8 +5,8 @@
     <string name="unable_to_load">Невозможно загрузить данные</string>
     <string name="loading">Загрузка…</string>
     <string name="episodes_list">Список серий:</string>
-    <string name="new_series">Новые</string>
-    <string name="all_series">Все</string>
+    <string name="new_series">Новые серии</string>
+    <string name="all_series">Все сериалы</string>
     <string name="no_description">Нет описания</string>
     <string name="no_serials">Нет сериалов</string>
 </resources>
