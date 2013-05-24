@@ -5,7 +5,7 @@
               android:layout_height="wrap_content">
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:id="@+id/news_item_preview"
+               android:id="@+id/new_episode_item_preview"
                android:paddingRight="4dp"
                android:paddingTop="6dp"
                android:paddingBottom="6dp"
@@ -19,21 +19,21 @@
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="Континуум"
-                      android:id="@+id/news_item_name"
+                      android:id="@+id/new_episode_item_name"
                       android:layout_weight="1"
                       android:textSize="18sp"
                       android:textStyle="bold"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="14.05.2013 18:08"
-                      android:id="@+id/news_item_date"
+                      android:id="@+id/new_episode_item_date"
                       android:layout_weight="0"
                       android:textSize="14sp"/>
         </LinearLayout>
         <TextView android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:text="Вторая кожа (Second Skin)"
-                  android:id="@+id/news_item_episode"
+                  android:id="@+id/new_episode_item_episode"
                   android:textSize="18sp"/>
     </LinearLayout>
 </LinearLayout>

@@ -22,12 +22,12 @@ public class DescriptionActivity extends SherlockActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        setContentView(R.layout.desc_view);
+        setContentView(R.layout.serial_description_view);
 
         Intent intent = getIntent();
         if (null != intent) {
-            episodesList = (ListView)findViewById(R.id.episodes_list);
-            episodesList.setEmptyView(findViewById(R.id.description_empty_view));
+            episodesList = (ListView)findViewById(R.id.serial_description_episodes_list);
+            episodesList.setEmptyView(findViewById(R.id.serial_description_empty));
             episodesList.setHeaderDividersEnabled(false);
 
             String url = intent.getStringExtra("url");
@@ -42,12 +42,12 @@ public class DescriptionActivity extends SherlockActivity {
     }
 
     private void updateView(SerialDescription desc) {
-        View headerView = getLayoutInflater().inflate(R.layout.desc_header, null);
+        View headerView = getLayoutInflater().inflate(R.layout.serial_description_header, null);
 
-        TextView descView = (TextView)headerView.findViewById(R.id.serial_description);
+        TextView descView = (TextView)headerView.findViewById(R.id.serial_description_text);
         descView.setText(desc.desc);
 
-        ImageView posterView = (ImageView)headerView.findViewById(R.id.serial_poster);
+        ImageView posterView = (ImageView)headerView.findViewById(R.id.serial_description_poster);
         posterView.setImageBitmap(desc.poster);
 
         episodesList.addHeaderView(headerView);

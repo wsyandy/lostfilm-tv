@@ -32,14 +32,14 @@ public class SerialListFragment extends SherlockFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.serial_list_view, null);
+        return inflater.inflate(R.layout.serial_list_fragment, null);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         serialsList = (ListView)getActivity().findViewById(R.id.serials_list);
-        serialsList.setEmptyView(getActivity().findViewById(R.id.serials_empty_view));
+        serialsList.setEmptyView(getActivity().findViewById(R.id.serials_empty_list));
         serialsList.setOnItemClickListener(clickListener);
         updateView();
     }

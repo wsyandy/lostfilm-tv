@@ -63,10 +63,10 @@ public final class NewEpisodeItemAdapter extends BaseAdapter {
         private ImageView preView;
 
         private ViewHolder(View view) {
-            nameView = (TextView)view.findViewById(R.id.news_item_name);
-            dateView = (TextView)view.findViewById(R.id.news_item_date);
-            episodeView = (TextView)view.findViewById(R.id.news_item_episode);
-            preView = (ImageView)view.findViewById(R.id.news_item_preview);
+            nameView = (TextView)view.findViewById(R.id.new_episode_item_name);
+            dateView = (TextView)view.findViewById(R.id.new_episode_item_date);
+            episodeView = (TextView)view.findViewById(R.id.new_episode_item_episode);
+            preView = (ImageView)view.findViewById(R.id.new_episode_item_preview);
         }
 
         private void populateFrom(NewEpisodeItem item) {

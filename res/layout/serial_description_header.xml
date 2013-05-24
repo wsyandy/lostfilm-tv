@@ -5,12 +5,12 @@
               android:layout_height="match_parent">
     <ImageView android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:id="@+id/serial_poster"
+               android:id="@+id/serial_description_poster"
                android:layout_gravity="center"
                android:contentDescription="poster"/>
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:id="@+id/serial_description"
+              android:id="@+id/serial_description_text"
               android:textSize="18sp"/>
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"

@@ -47,7 +47,7 @@ public class NewEpisodeListFragment extends SherlockFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.new_episode_list_view, null);
+        return inflater.inflate(R.layout.new_episode_list_fragment, null);
     }
 
     @Override
@@ -55,9 +55,9 @@ public class NewEpisodeListFragment extends SherlockFragment {
         super.onActivityCreated(savedInstanceState);
 
         Activity activity = getActivity();
-        newsView = (ListView)activity.findViewById(R.id.news_list);
+        newsView = (ListView)activity.findViewById(R.id.new_episode_list);
         newsView.setAdapter(new NewEpisodeItemAdapter(activity));
-        newsView.setEmptyView(activity.findViewById(R.id.empty_view));
+        newsView.setEmptyView(activity.findViewById(R.id.new_episode_empty_list));
         newsView.setOnScrollListener(scrollListener);
         newsView.setOnItemClickListener(clickListener);
 
