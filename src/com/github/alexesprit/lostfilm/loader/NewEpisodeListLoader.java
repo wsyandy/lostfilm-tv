@@ -2,13 +2,13 @@ package com.github.alexesprit.lostfilm.loader;
 
 import android.util.Log;
 import com.github.alexesprit.lostfilm.Util;
-import com.github.alexesprit.lostfilm.item.NewsItem;
+import com.github.alexesprit.lostfilm.item.NewEpisodeItem;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class NewsListLoader {
+public final class NewEpisodeListLoader {
     private static final String NEWS_URL = "http://www.lostfilm.tv/browse.php";
     /*
      * 1 group: serial name
@@ -29,7 +29,7 @@ public final class NewsListLoader {
         ++page;
     }
 
-    public ArrayList<NewsItem> loadNews() {
+    public ArrayList<NewEpisodeItem> loadNews() {
         long t0, t1;
         t0 = System.currentTimeMillis();
         String content = Util.getURLContent(getNewsURL());
@@ -37,14 +37,14 @@ public final class NewsListLoader {
         Log.i("LostFilm", "[news] load time: " + (t1 - t0) + " sec.");
         if (null != content) {
             t0 = System.currentTimeMillis();
-            ArrayList<NewsItem> items = new ArrayList<NewsItem>();
+            ArrayList<NewEpisodeItem> items = new ArrayList<NewEpisodeItem>();
             Pattern p = Pattern.compile(NEWS_PATTERN, Pattern.DOTALL);
             Pattern data = Pattern.compile(DATA_PATTERN, Pattern.DOTALL);
             Matcher m = p.matcher(content);
             while (m.find()) {
                 Matcher mdata = data.matcher(m.group(2));
                 while (mdata.find()) {
-                    NewsItem item = new NewsItem();
+                    NewEpisodeItem item = new NewEpisodeItem();
                     item.name = m.group(1);
                     item.date = mdata.group(4);
                     item.episode = mdata.group(3);

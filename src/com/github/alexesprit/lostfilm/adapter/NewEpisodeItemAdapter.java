@@ -9,17 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.Util;
-import com.github.alexesprit.lostfilm.item.NewsItem;
+import com.github.alexesprit.lostfilm.item.NewEpisodeItem;
 import com.github.alexesprit.lostfilm.loader.LazyImageLoader;
 
 import java.util.ArrayList;
 
-public final class NewsItemAdapter extends BaseAdapter {
-    private ArrayList<NewsItem> items = new ArrayList<NewsItem>();
+public final class NewEpisodeItemAdapter extends BaseAdapter {
+    private ArrayList<NewEpisodeItem> items = new ArrayList<NewEpisodeItem>();
     private LazyImageLoader loader = new LazyImageLoader();
     private LayoutInflater inflater;
 
-    public NewsItemAdapter(Context context) {
+    public NewEpisodeItemAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -29,7 +29,7 @@ public final class NewsItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public NewsItem getItem(int i) {
+    public NewEpisodeItem getItem(int i) {
         return items.get(i);
     }
 
@@ -42,7 +42,7 @@ public final class NewsItemAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder vh;
         if (null == view) {
-            view = inflater.inflate(R.layout.news_item, null);
+            view = inflater.inflate(R.layout.new_episode_item, null);
             vh = new ViewHolder(view);
             view.setTag(vh);
         } else {
@@ -52,7 +52,7 @@ public final class NewsItemAdapter extends BaseAdapter {
         return view;
     }
 
-    public void extend(ArrayList<NewsItem> newItems) {
+    public void extend(ArrayList<NewEpisodeItem> newItems) {
         items.addAll(newItems);
     }
 
@@ -69,7 +69,7 @@ public final class NewsItemAdapter extends BaseAdapter {
             preView = (ImageView)view.findViewById(R.id.news_item_preview);
         }
 
-        private void populateFrom(NewsItem item) {
+        private void populateFrom(NewEpisodeItem item) {
             int color = Util.getStringColor(item.name);
             nameView.setText(item.name);
             nameView.setTextColor(color);

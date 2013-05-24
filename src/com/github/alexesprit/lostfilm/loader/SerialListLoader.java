@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SerialsListLoader {
+public class SerialListLoader {
     private static final String SERIAL_PATTERN = "<a href=\"(.+?)\" class=\"bb_a\">(.+?)<br><span>";
 
     public ArrayList<SerialItem> getSerialsList() {

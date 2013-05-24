@@ -12,14 +12,14 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.github.alexesprit.lostfilm.activity.DescriptionActivity;
 import com.github.alexesprit.lostfilm.R;
-import com.github.alexesprit.lostfilm.adapter.NewsItemAdapter;
-import com.github.alexesprit.lostfilm.item.NewsItem;
-import com.github.alexesprit.lostfilm.loader.NewsListLoader;
+import com.github.alexesprit.lostfilm.adapter.NewEpisodeItemAdapter;
+import com.github.alexesprit.lostfilm.item.NewEpisodeItem;
+import com.github.alexesprit.lostfilm.loader.NewEpisodeListLoader;
 
 import java.util.ArrayList;
 
-public class NewsListFragment extends SherlockFragment {
-    private NewsListLoader loader;
+public class NewEpisodeListFragment extends SherlockFragment {
+    private NewEpisodeListLoader loader;
     private ListView newsView;
     private AbsListView.OnScrollListener scrollListener = new AbsListView.OnScrollListener() {
         private int prevTotalCount = 0;
@@ -41,13 +41,13 @@ public class NewsListFragment extends SherlockFragment {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Adapter adapter = adapterView.getAdapter();
-            showDescription((NewsItem)adapter.getItem(i));
+            showDescription((NewEpisodeItem)adapter.getItem(i));
         }
     };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.news_list_view, null);
+        return inflater.inflate(R.layout.new_episode_list_view, null);
     }
 
     @Override
@@ -56,16 +56,16 @@ public class NewsListFragment extends SherlockFragment {
 
         Activity activity = getActivity();
         newsView = (ListView)activity.findViewById(R.id.news_list);
-        newsView.setAdapter(new NewsItemAdapter(activity));
+        newsView.setAdapter(new NewEpisodeItemAdapter(activity));
         newsView.setEmptyView(activity.findViewById(R.id.empty_view));
         newsView.setOnScrollListener(scrollListener);
         newsView.setOnItemClickListener(clickListener);
 
-        loader = new NewsListLoader();
+        loader = new NewEpisodeListLoader();
         updateView();
     }
 
-    private void showDescription(NewsItem item) {
+    private void showDescription(NewEpisodeItem item) {
         Intent intent = new Intent(getActivity(), DescriptionActivity.class);
         intent.putExtra("url", item.descURL);
         intent.putExtra("name", item.name);
@@ -86,22 +86,22 @@ public class NewsListFragment extends SherlockFragment {
         activity.setSupportProgressBarIndeterminateVisibility(show);
     }
 
-    private class NewsLoadTask extends AsyncTask<Void, Void, ArrayList<NewsItem>> {
+    private class NewsLoadTask extends AsyncTask<Void, Void, ArrayList<NewEpisodeItem>> {
         @Override
         protected void onPreExecute() {
             setLoadingProgress(true);
         }
 
         @Override
-        protected ArrayList<NewsItem> doInBackground(Void... voids) {
+        protected ArrayList<NewEpisodeItem> doInBackground(Void... voids) {
             return loader.loadNews();
         }
 
         @Override
-        protected void onPostExecute(ArrayList<NewsItem> items) {
+        protected void onPostExecute(ArrayList<NewEpisodeItem> items) {
             if (isVisible()) {
                 if (items != null) {
-                    NewsItemAdapter adapter = (NewsItemAdapter)newsView.getAdapter();
+                    NewEpisodeItemAdapter adapter = (NewEpisodeItemAdapter)newsView.getAdapter();
                     adapter.extend(items);
                     adapter.notifyDataSetChanged();
                 } else {

@@ -7,8 +7,8 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.adapter.TabsAdapter;
-import com.github.alexesprit.lostfilm.fragment.NewsListFragment;
-import com.github.alexesprit.lostfilm.fragment.SerialsListFragment;
+import com.github.alexesprit.lostfilm.fragment.NewEpisodeListFragment;
+import com.github.alexesprit.lostfilm.fragment.SerialListFragment;
 
 public class StartActivity extends SherlockFragmentActivity {
     @Override
@@ -23,8 +23,8 @@ public class StartActivity extends SherlockFragmentActivity {
 
         ViewPager pager = (ViewPager)findViewById(R.id.start_view_pager);
         TabsAdapter adapter = new TabsAdapter(this, pager);
-        adapter.addTab(bar.newTab().setText(R.string.new_series), NewsListFragment.class);
-        adapter.addTab(bar.newTab().setText(R.string.all_series), SerialsListFragment.class);
+        adapter.addTab(bar.newTab().setText(R.string.new_series), NewEpisodeListFragment.class);
+        adapter.addTab(bar.newTab().setText(R.string.all_series), SerialListFragment.class);
         pager.setAdapter(adapter);
 
         if (null != inState) {

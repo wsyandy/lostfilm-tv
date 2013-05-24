@@ -16,11 +16,11 @@ import com.github.alexesprit.lostfilm.R;
 import com.github.alexesprit.lostfilm.activity.DescriptionActivity;
 import com.github.alexesprit.lostfilm.adapter.SerialItemAdapter;
 import com.github.alexesprit.lostfilm.item.SerialItem;
-import com.github.alexesprit.lostfilm.loader.SerialsListLoader;
+import com.github.alexesprit.lostfilm.loader.SerialListLoader;
 
 import java.util.ArrayList;
 
-public class SerialsListFragment extends SherlockFragment {
+public class SerialListFragment extends SherlockFragment {
     private ListView serialsList;
     private AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
         @Override
@@ -32,7 +32,7 @@ public class SerialsListFragment extends SherlockFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.serials_list_view, null);
+        return inflater.inflate(R.layout.serial_list_view, null);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class SerialsListFragment extends SherlockFragment {
     }
 
     private class SerialsListLoadTask extends AsyncTask<Void, Void, ArrayList<SerialItem>> {
-        private SerialsListLoader loader = new SerialsListLoader();
+        private SerialListLoader loader = new SerialListLoader();
 
         @Override
         protected void onPreExecute() {
